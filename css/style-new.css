@@ -1,0 +1,103 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,100);
+
+html, body {
+	background: #EBEBEB;
+	height: 100%;
+}
+
+
+#container {
+	position: relative;
+	background: #F7F7F7;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8E8), to(#FAF8F5));
+	width: 85%;
+	margin: 0 auto;
+	height: 400px;
+
+}
+.topNav {
+	position: relative;
+	height: 100px;
+	top: 0;
+	padding: 35px 50px 0 50px;
+}
+
+nav a.logo {
+	display: block;
+	height: 72px;
+	left: 520px;
+	margin: 5px 0 0 0;
+	padding: 4px;
+	position: absolute;
+	width: 136px;
+
+
+}
+nav a.logo:hover {
+	border: 4px solid #6b6b6b;
+	padding: 0;
+}
+
+
+nav a.logo img {
+	display: block;
+	height: 72px;
+	width: 136px;
+}
+
+nav a {
+	display: block;
+	float: left;
+	font-size: 20px;
+	height: 40px;
+	line-height: 20px;
+	margin: 12px 0 0 0;
+	text-transform: uppercase;
+	text-align: center;
+	width: 220px;
+	position: relative;
+	color: #ACB5B4;
+	padding-top: 20px;
+	background: url('../lines.PNG') no-repeat center;
+	font-family: "Raleway";
+
+}
+
+nav a.abilities {
+	margin-left: 160px;
+	
+}
+header {
+	position: relative;
+	padding: 0 50px 15px 50px;
+	background: inherit;
+	top: 0;
+}
+.wrapper {
+	width: 1047px;
+	position: relative;
+}
+.bxwrap {
+	width: 947px;
+	height: 250px;
+	position: relative;
+	padding: 0 50px;
+}
+div.bxwrap p {
+	padding: 40px;
+	font-size: 60px;
+	text-align: center;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-family: "Raleway";
+	opacity: .5;
+}
+.lowerleftcontainer {
+	height: 340px;
+	width: 400px;
+	position: relative;
+	top: 20px;
+	margin-right: 0;
+	background: #F7F7F7;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8E8), to(#FAF8F5));
+}
