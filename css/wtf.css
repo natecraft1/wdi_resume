@@ -82,6 +82,7 @@ div.bxwrap p {
 	position: relative;
 	padding: 0 50px;
 	transition: all 800ms ease-in-out;
+	left: -1000px;
 
 }
 .contentcontainer {
@@ -113,30 +114,37 @@ div.bxwrap p {
 
 }
 .lowerrightcontainer {
-	height: 340px;
+	min-height: 340px;
 	background: #F7F7F7;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8E8), to(#FAF8F5));
 	position: relative;
 	float: right;
 	width: 725px;
 	margin: 20px 0 20px 20px;
+	padding-bottom: 60px;
 	transition: all 500ms ease-in-out;
 }
 #info hr {
-	margin-right: 250px;
-	margin-left: 250px;
+	margin: 20px 250px;
+	border: 0; 
+	border-top: 1px solid #D9D7D7;
 }
-.contactinfo {
-	font: 15px Georgia;
+.body1, .body2 {
+	font: 30px Georgia;
 	text-align: center;
 }
-.personal header {
-	font: 45px Georgia;
-	text-align: center;
-	opacity: .8;
-	top: 15px;
+.body3 h1, .body4 h1, .body5 h1 {
+	text-align: left;
+	margin-left: 60px;
+	font-size: 25px;
 }
-.personal header {
+.body3 p, .body4 p, .body5 p{
+	text-align: left;
+	margin-left: 140px;
+	font: 15px/35px Georgia;
+}
+
+#info header {
 	text-align: center;
 	font-size: 35px;
 	padding-top: 10px;
@@ -175,3 +183,23 @@ header {
 	text-decoration: none;
 	color: blue;
 }
+.imghover {
+	height: 700px;
+	width: 1100px;
+}
+.lowerlefthover {
+	height: 727px;
+	width: 1147px;
+}
+.lowerrighthover {
+	float: none;
+	opacity: .4;
+	position: absolute;
+	top: 60px;
+	left: 40px;
+	pointer-events: none;
+	height: 476px;
+	width: 1015px;
+	border: 1px solid black;
+	}
+

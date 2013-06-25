@@ -82,6 +82,7 @@ $(document).ready(function() {
 	//		+ response.responseJSON.contact_info.street_address.zip_code;
 	//		var contactinfo = email + '<br><hr>' + phone + '<br><hr>' + address;
 	//		$('.body2').html(contactinfo);
+	//		//sCHOOL 1
 	//		var school1 = response.responseJSON.//instituion??;
 	//		$('.three header').html(school1);
 	//		var degree = response.responseJSON.//degree?;
@@ -92,6 +93,29 @@ $(document).ready(function() {
 	//		var startend = response.responseJSON.//start? + ' - ' + response.responseJSON.//end?;
 	// 		var school1info = gpadegree + '<hr><br>' + major + ' ' + minor + '<hr><br>' + startend;
 	//		#('.body3').html(school1info);
+	//		// Experience
+	//		var organization = response.responseJSON.//organization?;
+	//		#('.four header').html(organization);
+	//		var project = response.responseJSON.//project?;
+	//		var role = response.responseJSON.//role??;
+	//		var projrole = project + ', ' + role;
+	//		var location = response.responseJSON.//location?;
+	//		var startdate = response.responseJSON.//start?;
+	//		var enddate = response.responseJSON.//end?;
+	//		var locstartend = location + ', ' + startdate + ' - ' + enddate;
+	//		var responsibilities = response.responseJSON.//respons??;
+	//		var experience1 = projrole + '<hr><br>' + locstartend + '<hr><br>' + responsibilites;
+	//		$('.body4').html(experience1);
+	//		SKILLS
+	//		var skillname = response.responseJSON.//skillname??;
+	//		var yearsexp = response.responseJSON.//yrsexp?;
+	// 		var skillnameexp = skillname + '<hr><br>' + yearsexp;
+	//		$('.body5').html(skillnameexp);
+	//		ACCOMPLISHMENTS
+	//		var accname = response.responseJSON.//accname??;
+	//		var accdate = response.responseJSON.//accdate??;
+	//		var description = response.responseJSON.//desc??;
+	//		var acc1 = accname + '<hr><br>' + accdate + '<hr><br>' + description;
 	//		}}
 			
 
