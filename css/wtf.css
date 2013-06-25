@@ -133,12 +133,12 @@ div.bxwrap p {
 	font: 30px Georgia;
 	text-align: center;
 }
-.body3 h1, .body4 h1, .body5 h1 {
+.body3 h1, .body4 h1, .body5 h1, .body6 h1 {
 	text-align: left;
 	margin-left: 60px;
 	font-size: 25px;
 }
-.body3 p, .body4 p, .body5 p{
+.body3 p, .body4 p, .body5 p, .body6 p{
 	text-align: left;
 	margin-left: 140px;
 	font: 15px/35px Georgia;
