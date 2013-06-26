@@ -41,10 +41,9 @@ $(document).ready(function() {
 //perform all those actions on the nth element}
 	
 
-	$('.cycle a').mouseenter(function(event){
+	$('#p2 span').mouseenter(function(event){
 	//prevents the event from taking us to the top of the page
 	event.preventDefault();
-	$(this).css({'font-size': '28px'});
 	//if the link has class 'active' do nothing, otherwise remove class 'hidden' and add class 
 	//'active' to link and add class 'hidden' and remove class 'active' to 'active' elements
 	var clicksClass = $(this).attr("class");
