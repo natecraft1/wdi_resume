@@ -125,7 +125,7 @@ div.bxwrap p {
 	float: right;
 	width: 725px;
 	margin: 20px 0 20px 20px;
-	padding-bottom: 60px;
+	
 	transition: all 500ms ease-in-out;
 }
 #info hr {
@@ -134,8 +134,15 @@ div.bxwrap p {
 	border-top: 1px solid #D9D7D7;
 }
 .body1, .body2 {
-	font: 30px Georgia;
+	font: 22px Arial;
 	text-align: center;
+	opacity: .5;
+}
+.body2 h2 {
+	font: 22px Arial;
+	text-align: center;
+	
+
 }
 .body3 h1, .body4 h1, .body5 h1, .body6 h1 {
 	text-align: center;
@@ -159,6 +166,7 @@ div.bxwrap p {
 	padding-bottom: 0;
 	margin-bottom: -15px;
 	color: #B39BA3;
+	font-family: "Raleway";
 }
 header {
 	position: relative;
