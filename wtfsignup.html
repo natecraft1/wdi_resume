@@ -29,12 +29,14 @@
 							<label for='quote'></label>
 							<input type="text" id='quote' placeholder="type quote here"/>
 						</p>
-						<p>Click on the highlighted words in the paragraph below to add and edit that type of information.</p>
+						<p>Click on the highlighted words below to add and edit that type of information.</p>
 						<p id='p2'>
-							Hello! It's a pleasure to be applying. Here are my credentials regarding <span class="edu"><a href="#">education</a></span> and <span class="exp"><a href="#">work experience,</a></span> as 
-							well as some potentially relevant <span class="skillz"><a href="#">skills</a></span> and <span class="accomps"><a href="#">accomplishments.</a></span>  Here's my <span class="contakt"><a href="#">contact</a></span> and <span class="personal"><a href="#">personal</a></span> info
-							in case you're interested.
+							<span class="edu"><a href="#">education</a></span> / <span class="exp"><a href="#">work experience</a></span> / <span class="skillz"><a href="#">skills</a></span> / <span class="accomps"><a href="#">accomplishments</a></span> / <span class="contakt"><a href="#">contact</a></span> / <span class="personal"><a href="#">personal</a></span> 
 						</p>
+						<div id="sub">
+							<label for="submit">when you're done, just</label>
+							<input type="submit" id='submit'/>
+						</div>
 					</div>
 				</div>
 			</header>
@@ -70,14 +72,35 @@
 								<input type ='text' id='enddate' placeholder='End date'/>
 							</p>
 							</div>
+							<div class="add_new">
+								<p><a href="#">+ School</a></p>
+							</div>
 						</div>
 						<div class="exp hidden">
 							<header>Work Experience</header>
 							<hr>
 							<div class="body2">
-							<h1></h1>
-							<h2></h2>
-							<p></p>
+							<h1>
+								<input type="text" id='company' placeholder='Company Name'/>
+
+							</h1>
+							<h2>
+								<input type="text" id='project' placeholder='Project Name'/>
+								<input type="text" id='role' placeholder='Your Role'/>
+							</h2>
+							<p>
+								<input type="text" id='location' placeholder='Location'/>
+								<input type="text" id='expstartdate' placeholder='Start Date'/>
+								<input type="text" id='expenddate' placeholder='End Date'/>
+							</p>
+							<p id="responsibilities">
+								<input type="text" id='resp1' placeholder='Responsibility 1'/>
+								<input type="text" id='resp2' placeholder='Responsibility 2'/>
+								<input type="text" id='resp3' placeholder='Responsibility 3'/>
+								<input type="text" id='resp4' placeholder='Responsibility 4'/>
+								<input type="text" id='resp5' placeholder='Responsibility 5'/>
+								
+							</p>
 								
 							</div>
 						</div>
@@ -85,35 +108,80 @@
 							<header>Skills</header>
 							<hr>
 							<div class="body3">
-							<h1></h1> 
+							<h1>
+								<input type="text" id='skill1' placeholder='Skill Name'/>
+							</h1> 
 							
 							<p>
+								<input type="text" id='category' placeholder='Category'/>
+								<input type="text" id='yrsexp' placeholder='Years Experience'/>								
 							</p>
+							<h1>
+								<input type="text" id='skill1' placeholder='Skill Name'/>
+							</h1> 
+							
+							<p>
+								<input type="text" id='category' placeholder='Category'/>
+								<input type="text" id='yrsexp' placeholder='Years Experience'/>								
+							</p>
+							<div class="add_new">
+								<p><a href="#">+ Skill</a></p>
+							</div>
+
 							</div>
 						</div>
 						<div class="accomps hidden">
 							<header>Accomplishments</header>
 							<hr>
 							<div class="body4">
-								<h1></h1>
-								<p> 
+								<h1>
+									<input type="text" id='acc1' placeholder='Accomplishment 1'/>
+								</h1> 
+								<p>
+									<input type="text" id='accdate' placeholder='Date'/>			
 								</p>
+								<h1>
+									<input type="text" id='description' placeholder='Description' style="width: 480px; height: 100px"/>	
+								</h1>
+							<div class="add_new">
+								<p><a href="#">+ Accomplishments</a></p>
+							</div>
+								
 							</div>
 						</div>
 						<div class="contakt hidden">
 							<header>Contact</header>
 							<hr>
 							<div class="body5">
-								<h1></h1>	
-							 	<p></p>
+								<h1>
+									<input type="text" id='email' placeholder='Email' />
+									<br><hr>
+									<input type="text" id='phone' placeholder='Phone'/>
+									<br><hr>
+									
+								</h1>
+								<p>
+									<input type="text" id='city' placeholder='City'/>
+									<input type="text" id='state' placeholder='State'/>
+									<input type="text" id='zip' placeholder='Zipe Code'/>
+									<input type="text" id='Street' placeholder='Street'/>
+								</p>	
+							 	
 							</div>
 						</div>
 						<div class="personal hidden">
 							<header>Personal</header>
 							<hr>
 							<div class="body6">
-								<h1></h1>
-								<p> </p>
+								<h1>
+									<input type="text" id='name' placeholder='Your Name'/>
+								</h1>
+								<hr>
+								<p>
+									<input type="text" id='yoursite' placeholder='Your Website'/>
+									<input type="text" id='twitter' placeholder='Twitter'/>
+									<input type="text" id='linked_in' placeholder='LinkedIn'/>
+								</p>
 							</div>
 						</div>
 

@@ -149,8 +149,8 @@ div.bxwrap p:nth-child(2) {
 	opacity: .8;
 }
 
-.body1 h1 {
-	font: 15px Arial;
+.body1 h1, .body2 h1 {
+	font: 18px Arial;
 	
 }
 .body1 p {
@@ -159,8 +159,12 @@ div.bxwrap p:nth-child(2) {
 .body2 h2 {
 	font: 22px Arial;
 	text-align: center;
-	
-
+}
+.body2 p {
+	font: 14px Arial;
+}
+#responsibilities {
+	font: 34px Arial;
 }
 .body3 h1, .body4 h1, .body5 h1, .body6 h1 {
 	text-align: center;
@@ -171,7 +175,7 @@ div.bxwrap p:nth-child(2) {
 	margin-left: 0px;
 }
 .body3 p, .body4 p, .body5 p, .body6 p{
-	text-align: left;
+	text-align: center;
 	margin-left: 100px;
 	margin-right: 100px;
 	font: 15px/35px Georgia;
@@ -243,7 +247,7 @@ header {
 	text-align: center;
 }
 .topname p {
-	margin-top: -8px;
+	margin-top: -12px;
 	margin-bottom: 0;
 	position: absolute;
 	left: 400px;
@@ -260,7 +264,10 @@ header {
 	height: 20px;
 	background: #EBEBEB;
 }
-#p1 {
+#sub {
+	text-align: right;
+	font: 33px "Raleway";
+	opacity: .5;
 }
 #p2 {
 	font-size: 25px;
@@ -285,4 +292,21 @@ header {
 	text-decoration: none;
 	color: inherit;
 	font-style: normal;
+}
+.add_new p a {
+	text-decoration: none;
+	color: blue;
+	
+	margin-top: 50px;
+	text-align: center;
+
+}
+.add_new p {
+text-align: center;
+margin-left: 100px;
+margin-right: 100px;
+font: 15px/35px Georgia;
+}
+input {
+	text-align: center;
 }
