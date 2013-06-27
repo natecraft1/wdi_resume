@@ -1,11 +1,18 @@
-$(document).ready(function() {
-	console.log('im alive');
-	//slide in text
+
+	$(document).ready(function() {
 	$('.bxwrap').css('left', '0')
 	
 	//hover event
-	$(document).ready(function() {
 	//click event to add the option to add school, add more credentials
+	$('.add_new a').click(function() {
+
+	  var grab = $(this).closest('.multiple').children().not('.add_new').clone();
+
+	  $(this).parent().parent().before(grab);
+
+	  return false;
+	});
+	//submit function
 	$('#submit').submit(function() {
 		var userData = {};
 		
@@ -16,7 +23,7 @@ $(document).ready(function() {
 	});
 
 
-});
+
 	//figure out how to prevent this function from interferring with mouseenter before adding a call to it
 	var i = 0;
 	function cycle() {
@@ -61,6 +68,7 @@ $(document).ready(function() {
 		hideandshow();
 	}); //closes mouseenter function
 });
+
 
 
 	

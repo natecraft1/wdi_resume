@@ -149,7 +149,7 @@ div.bxwrap p {
 	margin-left: 0px;
 	font: 25px Georgia;
 }
-.body3 hr {
+.body3 hr, .body5 hr, .body6 hr {
 	margin-left: 0px;
 }
 .body3 p, .body4 p, .body5 p, .body6 p{

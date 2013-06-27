@@ -80,12 +80,12 @@ $(document).ready(function() {
 			// CONTACT INFO
 			var email = response.responseJSON.contact_info.email;
 			var phone = response.responseJSON.contact_info.phone;
-			var address = response.responseJSON.contact_info.street_address.street + ", " + '<br>' +
+			var address = response.responseJSON.contact_info.street_address.street + ", "  +
 			+ response.responseJSON.contact_info.street_address.city + ", "
 			+ response.responseJSON.contact_info.street_address.state + ", "
 			+ response.responseJSON.contact_info.street_address.zip_code;
 			var contactinfo = email + '<hr>' + phone + '<hr>' + address;
-			$('.body5').html(contactinfo);
+			$('.body5 p').html(contactinfo);
 	//SCHOOL1
 			var school1 = response.responseJSON.schools[0].name;
 			$('.body1 h1').html(school1);
