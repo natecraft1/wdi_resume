@@ -6,7 +6,7 @@
 	//click event to add the option to add school, add more credentials
 	$('.add_new a').click(function() {
 
-	  var grab = $(this).closest('.multiple').children().not('.add_new').clone();
+	  var grab = $(this).closest('.multiple').children().not('.add_new').first().clone();
 
 	  $(this).parent().parent().before(grab);
 
@@ -16,7 +16,28 @@
 	$('#submit').submit(function() {
 		var userData = {};
 		
-		userData.schoolname = $('#schoolname').val();
+		// contact_info
+		userData.contact_info 							= [];
+		userData.contact_info.email 					= $('#email').val();
+		userData.contact_info.phone						= $('#phone').val();
+		// street_address
+		userData.contact_info.street_address 			= [];
+		userData.contact_info.street_address.city 		= $('#city').val();
+		userData.contact_info.street_address.state 		= $('#state').val();
+		userData.contact_info.street_address.zip_code	= $('#zip_code').val();
+		userData.contact_info.street_address.street		= $('#street').val();
+		
+		// name, twitter, website, linked_in
+		userData.name_first 							= $('#name_first').val();
+		userData.name_last								= $('#name_last').val();
+		userData.website								= $('#website').val();
+		userData.twitter 								= $('#twitter').val();
+		userData.linked_in  							= $('#linked_in').val();	
+		//school groups
+		userData.schools 								= [];
+
+
+
 		console.log(userData);
 		
 		return false;
