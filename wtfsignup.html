@@ -60,19 +60,23 @@
 								<header>Education</header>
 								<hr> 
 								<div class="body1 multiple">	
-									<div class="cont1 ">
+									<div class="cont1">
 									<h1>
-										<input type ="text" id='schoolname' placeholder='School Name Here'/>
-										<input type ='text' id='degree' placeholder='Degree Name Here'/>
-										<input type ='text' id='gpa' placeholder='GPA Here'/>
+										<input type ="text" class='name' placeholder='School Name Here'/>
+										<input type ='text' class='degree' placeholder='Degree Name Here'/>
+										<input type ='text' class='gpa' placeholder='GPA Here'/>
 									</h1>
 									<p>
-										<input type ='text' id='major' placeholder='Major Here'/>
-										<input type ='text' id='minor' placeholder='Minor Here'/>
+										<input type ='text' class='major' placeholder='Major Here'/>
+										<input type ='text' class='minor' placeholder='Minor Here'/>
 									</p>
 									<p>
-										<input type ='text' id='startdate' placeholder='Start Date: mm/yyyy'/>
-										<input type ='text' id='enddate' placeholder='End date: mm/yyyy'/>
+										<label for='month'>Start Month</label>
+										<input type ='month' class='start_month_year'/>
+									</p>
+									<p>
+										<label for='month'>End Month</label>
+										<input type ='month' class='end_month_year'/>
 									</p>
 									</div>
 									<div class="add_new">
@@ -84,29 +88,36 @@
 							<div class="exp hidden">
 								<header>Work Experience</header>
 								<hr>
-								<div class="body2">
-								<h1>
-									<input type="text" id='company' placeholder='Company Name'/>
+								<div class="body2 multiple">
+									<div class="cont2">
+										<h1>
+											<input type="text" class='organization' placeholder='Company Name'/>
 
-								</h1>
-								<h2>
-									<input type="text" id='project' placeholder='Project Name'/>
-									<input type="text" id='role' placeholder='Your Role'/>
-								</h2>
-								<p>
-									<input type="text" id='location' placeholder='Location'/>
-									<input type="text" id='expstartdate' placeholder='Start Date'/>
-									<input type="text" id='expenddate' placeholder='End Date'/>
-								</p>
-								<p id="responsibilities">
-									<input type="text" id='resp1' placeholder='Responsibility 1'/>
-									<input type="text" id='resp2' placeholder='Responsibility 2'/>
-									<input type="text" id='resp3' placeholder='Responsibility 3'/>
-									<input type="text" id='resp4' placeholder='Responsibility 4'/>
-									<input type="text" id='resp5' placeholder='Responsibility 5'/>
+										</h1>
+										<h2>
+											<input type="text" class='project' placeholder='Project Name'/>
+											<input type="text" class='role' placeholder='Your Role'/>
+										</h2>
+										<p>
+											<input type="text" class='location' placeholder='Location'/>
+											<label for="start_month_year">Start Date</label>
+											<input type="month" class='start_month_year'/>
+											<label for="end_month_year">End Date</label>
+											<input type="month" class='end_month_year'/>
+										</p>
+										<div class="responsies">
+											<p id="responsibilities">
+												<input type="text" class='resp1' placeholder='Responsibility 1'/>
+												<p><a class="zargon7" href="#">+ Responibility</a></p>
+											</p>
+
+										</div>
+									</div>
+									<div class="add_new">
 									
-								</p>
-									
+											<p><a href="#">+ Experience</a></p>
+											
+									</div>
 								</div>
 							</div>
 							<div class="skillz hidden">
@@ -115,7 +126,7 @@
 								<div class="body3 multiple">
 									<div class="cont3">
 								<h1>
-									<input type="text" id='skill1' placeholder='Skill Name'/>
+									<input type="text" class='skill1' placeholder='Skill Name'/>
 								</h1> 
 								
 								<p>
