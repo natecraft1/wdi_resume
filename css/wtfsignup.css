@@ -163,8 +163,8 @@ div.bxwrap p:nth-child(2) {
 .body2 p {
 	font: 14px Arial;
 }
-#responsibilities {
-	font: 34px Arial;
+.resp1 {
+	font: 26px Arial;
 }
 .body3 h1, .body4 h1, .body5 h1, .body6 h1 {
 	text-align: center;

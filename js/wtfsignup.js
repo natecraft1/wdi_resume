@@ -1,14 +1,14 @@
 
 	function addRes(){
-	var whatev = $('#responsibilities').children().first().clone();
-	$('.zargon7').before(whatev);
+	var whatev = $('.responsibilities').children().first().clone();
+	$(this).parent().before(whatev);
 
 	return false;
 	}
 	function addExp(){
 		var grab = $(this).closest('.multiple').children().not('.add_new' ).first().clone();
-		var whatever = grab.find('.zargon7');
-		whatever.click(addRes);
+		var reslink = grab.find('.reslink');
+		reslink.click(addRes);
 		$(this).parent().parent().before(grab);
 
 		return false;
@@ -17,8 +17,6 @@
 	$(document).ready(function() {
 
 	$('.bxwrap').css('left', '0')
-	
-	
 	$('.add_new a').click(addExp); 
 	 
 	$('.responsies a').click(addRes);
