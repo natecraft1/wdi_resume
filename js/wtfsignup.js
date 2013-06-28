@@ -7,8 +7,7 @@
 	}
 	function addExp(){
 		var grab = $(this).closest('.multiple').children().not('.add_new' ).first().clone();
-		var reslink = grab.find('.reslink');
-		reslink.click(addRes);
+		$('reslink').click(addRes);
 		$(this).parent().parent().before(grab);
 
 		return false;
@@ -54,13 +53,14 @@
 				minor : $(this).find('.minor').val(),
 				start_month_year : start_month_year,
 				end_month_year : end_month_year,
-				gpa : $(this).find('.gpa').val()	
+				gpa : $(this).find('.gpa').val(),
+				degree : $(this).find('.degree').val()
 			});
 		
 		});
 		//experience
 		userData.experience								= [];
-		$('.body2').each(function() {
+		$('.cont2').each(function() {
 			var end 									= $(this).find('.end_month_year').val();
 			var end_month_year							= end.slice(5,7) + end.slice(2,4);
 			var start 									= $(this).find('.start_month_year').val();
@@ -75,13 +75,36 @@
 			});
 
 
-		console.log(userData);
-		return false;
+		
 		});
+		
 		//skills
 		userData.skills 								= [];
-		$('')
+		$('.cont3').each(function(){
+			userData.experience.push({
+			title : $(this).find('.title').val(),
+			experience : $(this).find('.experience').val(),
+			category : $(this).find('.category').val()
+			});
+		});
 
+		//accomplishments
+		userData.accomplishments 						= [];
+		$('.cont4').each(function(){
+			var month = $(this).find('.month_year').val().slice(5,7);
+			var yr = $(this).find('.month_year').val().slice(2,4);
+
+			userData.accomplishments.push({
+			title : $(this).find('.title').val(),
+			month_year : month + yr,
+			description : $(this).find('.description').val()
+
+			});
+		});
+		console.log(userData);
+		alert('Thank you for submitting!')
+		return false;
+		
 	});
 		
 
