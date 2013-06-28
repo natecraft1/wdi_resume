@@ -152,11 +152,17 @@ div.bxwrap p {
 .body3 hr, .body5 hr, .body6 hr {
 	margin-left: 0px;
 }
-.body3 p, .body4 p, .body5 p, .body6 p{
+.body3 p, .body4 p {
 	text-align: left;
-	margin-left: 100px;
 	margin-right: 100px;
-	font: 15px/35px Georgia;
+	margin-left: 100px;
+	font: 20px/35px Georgia;	
+}
+
+.body5 p, .body6 p{
+	text-align: center;
+
+	font: 20px/35px Georgia;
 }
 
 #info header {

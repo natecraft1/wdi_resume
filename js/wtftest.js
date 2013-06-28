@@ -62,12 +62,12 @@ $(document).ready(function() {
 
 
 	
-	$.ajax('/api/resumes/51c3a1448878e79e5d000001', {
+	$.ajax('/api/resumes/51ce06d88878e732aa00002c', {
 		complete : function(response) {
 			// var r = response.responseJSON	
 			console.log(response.responseJSON);
 			// PERSONAL INFO
-			var first = response.responseJSON.name_first
+			var first = response.responseJSON.name_first;
 			var last = response.responseJSON.name_last;
 			var fullName = first + " " + last;
 			$('.body6 h1').html(fullName);
@@ -117,9 +117,10 @@ $(document).ready(function() {
 			$('.body2 h2').html(experience1);
 			$('.body2 p').html(responsibilities);
 			//SKILLS
-			var title = response.responseJSON.skill[0].title;
-			var yearsexp = response.responseJSON.skill[0].experience;
-			var category = response.responseJSON.skill[0].category;
+			console.log(response.responseJSON);
+			var title = response.responseJSON.skills[0].title;
+			var yearsexp = response.responseJSON.skills[0].experience;
+			var category = response.responseJSON.skills[0].category;
 			var catyear = category + ', ' + yearsexp;
 			var skillnameexp = title + '<hr>' + catyear + ' years experience.' ;
 			$('.body3 h1').html(skillnameexp);

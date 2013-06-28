@@ -24,11 +24,11 @@
 			var userData = {};
 			
 			// contact_info
-			userData.contact_info 							= [];
+			userData.contact_info 							= {};
 			userData.contact_info.email 					= $('.email').val();
 			userData.contact_info.phone						= $('.phone').val();
 			// street_address
-			userData.contact_info.street_address 			= [];
+			userData.contact_info.street_address 			= {};
 			userData.contact_info.street_address.city 		= $('.city').val();
 			userData.contact_info.street_address.state 		= $('.state').val();
 			userData.contact_info.street_address.zip_code	= $('.zip_code').val();
@@ -87,9 +87,9 @@
 			//skills
 			userData.skills 								= [];
 			$('.cont3').each(function(){
-				userData.experience.push({
+				userData.skills.push({
 					title : $(this).find('.title').val(),
-					experience : $(this).find('.experience').val(),
+					experience : $(this).find('.yrsexp').val(),
 					category : $(this).find('.category').val()
 				});
 			});
@@ -109,8 +109,19 @@
 			});
 			console.log(userData);
 			alert('Thank you for submitting!')
+			
+			var postData = JSON.stringify({resume : userData});
+			$.ajax( {
+				url : 'api/resumes',
+				type : 'POST',
+				data : postData,
+				complete : function(response) {
+					console.log(response);
+				}
+			});
 			return false;
 			
+
 		}); //closes submit function
 		
 
