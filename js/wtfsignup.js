@@ -7,7 +7,8 @@
 	}
 	function addExp(){
 		var grab = $(this).closest('.multiple').children().not('.add_new' ).first().clone();
-		$('reslink').click(addRes);
+		var reslink = grab.find('.reslink');
+		reslink.click(addRes);
 		$(this).parent().parent().before(grab);
 
 		return false;
@@ -87,7 +88,7 @@
 			//skills
 			userData.skills 								= [];
 			$('.cont3').each(function(){
-				userData.skills.push({
+				userData.experience.push({
 					title : $(this).find('.title').val(),
 					experience : $(this).find('.yrsexp').val(),
 					category : $(this).find('.category').val()

@@ -6,7 +6,7 @@
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFF8E8), to(#FAF8F5));
 	width: 85%;
 	margin: 0 auto;
-	height: 400px;
+	height: 300px;
 
 }
 .topNav {
@@ -67,7 +67,7 @@ header {
 	position: relative;
 }
 div.bxwrap p {
-	padding: 40px;
+	padding: 0 40px;
 	font-size: 60px;
 	text-align: center;
 	margin-top: 0;
@@ -78,7 +78,7 @@ div.bxwrap p {
 }
 .bxwrap {
 	width: 947px;
-	height: 250px;
+	
 	position: relative;
 	padding: 0 50px;
 	transition: all 800ms ease-in-out;
@@ -151,7 +151,9 @@ div.bxwrap p {
 #info header {
 	text-align: center;
 	font-size: 35px;
-	padding-top: 10px;
+	padding-top: 20px;
+	padding-bottom: 0;
+	margin-bottom: -15px;
 	color: #B39BA3;
 }
 header {

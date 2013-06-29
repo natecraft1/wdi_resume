@@ -7,33 +7,33 @@ $(document).ready(function() {
   
 	}, 7000)
 	//hover event
-	$('.image').hover(function() {
+	// $('.image').hover(function() {
 
-		$(this).toggleClass('imghover');
-		$('.lowerleftcontainer').toggleClass('lowerlefthover');
-		$('.lowerrightcontainer').toggleClass('lowerrighthover');
+	// 	$(this).toggleClass('imghover');
+	// 	$('.lowerleftcontainer').toggleClass('lowerlefthover');
+	// 	$('.lowerrightcontainer').toggleClass('lowerrighthover');
 
 
 
-	});
+	// });
 	//figure out how to prevent this function from interferring with mouseenter before adding a call to it
-	var i = 0;
-	function cycle() {
+	// var i = 0;
+	// function cycle() {
 
-		setTimeout(function() {
-		var prev = $('#info div:nth-of-type('+(i-1)+')');
-		var current = $('#info div:nth-of-type('+i+')');
-		current.addClass('active');
-		current.removeClass('hidden');
-		prev.addClass('hidden');
-		prev.removeClass('active');
-		i++;
-		if (i < 3) {
-			cycle();
-		}
-		}, 3000)
+	// 	setTimeout(function() {
+	// 	var prev = $('#info div:nth-of-type('+(i-1)+')');
+	// 	var current = $('#info div:nth-of-type('+i+')');
+	// 	current.addClass('active');
+	// 	current.removeClass('hidden');
+	// 	prev.addClass('hidden');
+	// 	prev.removeClass('active');
+	// 	i++;
+	// 	if (i < 3) {
+	// 		cycle();
+	// 	}
+	// 	}, 3000)
 		
-		}
+	// 	}
 
 
 
@@ -62,11 +62,11 @@ $(document).ready(function() {
 
 
 	
-	$.ajax('/api/resumes/51ce06d88878e732aa00002c', {
+	$.ajax('/api/resumes/51c481298878e79d31000001', {
 		complete : function(response) {
 			// var r = response.responseJSON	
-			console.log(response.responseJSON);
-			// PERSONAL INFO
+			// console.log(response.responseJSON);
+			// // PERSONAL INFO
 			var first = response.responseJSON.name_first;
 			var last = response.responseJSON.name_last;
 			var fullName = first + " " + last;
@@ -86,53 +86,72 @@ $(document).ready(function() {
 			+ response.responseJSON.contact_info.street_address.zip_code;
 			var contactinfo = email + '<hr>' + phone + '<hr>' + address;
 			$('.body5 p').html(contactinfo);
-	//SCHOOL1
-			var school1 = response.responseJSON.schools[0].name;
-			$('.body1 h1').html(school1);
-			var degree = response.responseJSON.schools[0].degree;
-			var gpa = response.responseJSON.schools[0].gpa;
-			var gpadegree = degree + ', ' + gpa + ' GPA';
-			var major = response.responseJSON.schools[0].major;
-			var minor = response.responseJSON.schools[0].minor;
-			var startend = response.responseJSON.schools[0].start_month_year + ' - ' + response.responseJSON.schools[0].end_month_year;
-			var school1info = gpadegree + '<hr>' + major + ', ' + minor + '<hr>' + startend;
-			$('.body1 p').html(school1info);
+			
+
+			//SCHOOL1
+
+			for(i=0; i < response.responseJSON.schools.length; i++) {
+			var school1 = response.responseJSON.schools[i].name;
+			var degree = response.responseJSON.schools[i].degree;
+			var gpa = response.responseJSON.schools[i].gpa;
+			var major = response.responseJSON.schools[i].major;
+			var minor = response.responseJSON.schools[i].minor;
+			var startdate = response.responseJSON.schools[i].start_month_year; 
+			var enddate = response.responseJSON.schools[i].end_month_year;
+			
+			var school1info = degree + ', ' + gpa + ' GPA' + '<hr>' + major + ', ' + minor + '<hr>' + startdate + ' - ' + enddate;
+			
+			$('.educ').append("<div class='body1'>"+
+								"<h1>" + school1 + "</h1>" +
+								"<p>" + school1info + "</p>" +
+							"</div>");
+			}	
+
 			// Experience
-			var organization = response.responseJSON.experience[0].organization;
-			$('.body2 h1').html(organization);
-			var project = response.responseJSON.experience[0].project;
-			var role = response.responseJSON.experience[0].role;
+			for(i=0; i < response.responseJSON.experience.length; i++) {
+			var organization = response.responseJSON.experience[i].organization;
+			var project = response.responseJSON.experience[i].project;
+			var role = response.responseJSON.experience[i].role;
 			var projrole = project + ', ' + role;
-			var location = response.responseJSON.experience[0].location;
-			var startdate = response.responseJSON.experience[0].start_month_year;
-			var enddate = response.responseJSON.experience[0].end_month_year;
+			var location = response.responseJSON.experience[i].location;
+			var startdate = response.responseJSON.experience[i].start_month_year;
+			var enddate = response.responseJSON.experience[i].end_month_year;
 			var locstartend = location + ', ' + startdate + ' - ' + enddate;
-			var res0 = response.responseJSON.experience[0].responsibilities[0];
-			var res1 = response.responseJSON.experience[0].responsibilities[1];
-			var res2 = response.responseJSON.experience[0].responsibilities[2];
-			var res3 = response.responseJSON.experience[0].responsibilities[3];
-			var res4 = response.responseJSON.experience[0].responsibilities[4];
-			var responsibilities = res0 + '<br>' + res1 + '<br>' + res2 + '<br>' + res3 + '<br>' + res4;
+
 			var experience1 = projrole + '<hr>' + locstartend + '<hr>';
-			$('.body2 h2').html(experience1);
-			$('.body2 p').html(responsibilities);
+			$('.expr').append("<div class='body2'>" +
+								"<h1>" + organization + "</h1>" +
+								"<h2>" + experience1 + "</h2></div>");
+			for(j=0; j < response.responseJSON.experience[i].responsibilities.length; j++) {
+				var res = response.responseJSON.experience[i].responsibilities[j];
+				$('.body2:nth-of-type(' + (i+1) + ')').append("<p>" + res + "</p>");
+			}
+			
+		}
+			
 			//SKILLS
-			console.log(response.responseJSON);
-			var title = response.responseJSON.skills[0].title;
-			var yearsexp = response.responseJSON.skills[0].experience;
-			var category = response.responseJSON.skills[0].category;
+			for(i=0; i < response.responseJSON.skill.length; i++) {
+			var title = response.responseJSON.skill[i].title;
+			var yearsexp = response.responseJSON.skill[i].experience;
+			var category = response.responseJSON.skill[i].category;
 			var catyear = category + ', ' + yearsexp;
-			var skillnameexp = title + '<hr>' + catyear + ' years experience.' ;
-			$('.body3 h1').html(skillnameexp);
-			//ACCOMPLISHMENTS
-			var accname = response.responseJSON.accomplishments[0].title;
-			var accdate = response.responseJSON.accomplishments[0].month_year;
-			var description = response.responseJSON.accomplishments[0].description;
+			var skillnameexp = title + '<hr>' + catyear + ' years experience.';
+
+			$('.sklz').append("<div class='body3'>" +
+								"<h1>" + title + "</h1>" +
+								"<p>" + catyear + "</p></div>");
+			}	
+			 //ACCOMPLISHMENTS
+			for(i=0; i < response.responseJSON.accomplishments.length; i++) {
+			var accname = response.responseJSON.accomplishments[i].title;
+			var accdate = response.responseJSON.accomplishments[i].month_year;
+			var description = response.responseJSON.accomplishments[i].description;
 			var acc1 = accname + '<hr>' + accdate + '<hr>' + description;
-			$('.body4 h1').html(accname + ', ' + accdate);
-			$('.body4 p').html(description);
+			
+			$('.accompz').append("<div class='body4'><h1>" + accname + ', ' + accdate + "</h1><p>" + description + "</p></div>");
 			}
 			
 
+	 }
 	});
 });			

@@ -59,67 +59,75 @@ $(document).ready(function() {
 
 
 	
-	//$.ajax('/api/resumes/51c3a1448878e79e5d000001', {
-	//	complete : function(response) {
-	//		// var r = response.responseJSON	
-	//		console.log(response.responseJSON)
-	//		// PERSONAL INFO
-	//		var first = response.responseJSON.name_first
-	//		var last = response.responseJSON.name_last;
-	//		var fullName = first + " " + last;
-	//		$('.one header').html(fullName);
-	//		var website = response.responseJSON.website;
-	//		var twitter = response.responseJSON.//twitter;
-	//		var linkedin = response.responseJSON.//linkedn;
-	//		var webtwitin = website + '<br><hr>' + twitter + '<br><hr>' + address;
-	//		$('.body1').html(webtwitin);
-	//		// CONTACT INFO
-	//		var email = response.responseJSON.contact_info.email;
-	//		var phone = response.responseJSON.contact_info.phone;
-	//		var address = response.responseJSON.contact_info.street_address.street + ", " + '<br>' +
-	//		+ response.responseJSON.contact_info.street_address.city + ", "
-	//		+ response.responseJSON.contact_info.street_address.state + ", "
-	//		+ response.responseJSON.contact_info.street_address.zip_code;
-	//		var contactinfo = email + '<br><hr>' + phone + '<br><hr>' + address;
-	//		$('.body2').html(contactinfo);
-	//		//sCHOOL 1
-	//		var school1 = response.responseJSON.//instituion??;
-	//		$('.three header').html(school1);
-	//		var degree = response.responseJSON.//degree?;
-	//		var gpa = response.responseJSON.//gpa?;
-	//		var gpadegree = degree + ', ' + gpa + 'GPA';
-	//		var major = response.responseJSON.//major?;
-	//		var minor = response.responseJSON.//minor?;
-	//		var startend = response.responseJSON.//start? + ' - ' + response.responseJSON.//end?;
-	// 		var school1info = gpadegree + '<hr><br>' + major + ' ' + minor + '<hr><br>' + startend;
-	//		#('.body3').html(school1info);
-	//		// Experience
-	//		var organization = response.responseJSON.//organization?;
-	//		#('.four header').html(organization);
-	//		var project = response.responseJSON.//project?;
-	//		var role = response.responseJSON.//role??;
-	//		var projrole = project + ', ' + role;
-	//		var location = response.responseJSON.//location?;
-	//		var startdate = response.responseJSON.//start?;
-	//		var enddate = response.responseJSON.//end?;
-	//		var locstartend = location + ', ' + startdate + ' - ' + enddate;
-	//		var responsibilities = response.responseJSON.//respons??;
-	//		var experience1 = projrole + '<hr><br>' + locstartend + '<hr><br>' + responsibilites;
-	//		$('.body4').html(experience1);
-	//		SKILLS
-	//		var skillname = response.responseJSON.//skillname??;
-	//		var yearsexp = response.responseJSON.//yrsexp?;
-	// 		var skillnameexp = skillname + '<hr><br>' + yearsexp;
-	//		$('.body5').html(skillnameexp);
-	//		ACCOMPLISHMENTS
-	//		var accname = response.responseJSON.//accname??;
-	//		var accdate = response.responseJSON.//accdate??;
-	//		var description = response.responseJSON.//desc??;
-	//		var acc1 = accname + '<hr><br>' + accdate + '<hr><br>' + description;
-	//		}}
+	$.ajax('/api/resumes/51c3a1448878e79e5d000001', {
+		complete : function(response) {
+			// var r = response.responseJSON	
+			console.log(response.responseJSON);
+			// PERSONAL INFO
+			var first = response.responseJSON.name_first
+			var last = response.responseJSON.name_last;
+			var fullName = first + " " + last;
+			$('.one header').html(fullName);
+			var website = response.responseJSON.website;
+			var twitter = response.responseJSON.twitter;
+			var linkedin = response.responseJSON.linked_in;
+			var webtwitin = website + '<br><hr>' + twitter + '<br><hr>' + linkedin;
+			$('.body1').html(webtwitin);
+			// CONTACT INFO
+			var email = response.responseJSON.contact_info.email;
+			var phone = response.responseJSON.contact_info.phone;
+			var address = response.responseJSON.contact_info.street_address.street + ", " + '<br>' +
+			+ response.responseJSON.contact_info.street_address.city + ", "
+			+ response.responseJSON.contact_info.street_address.state + ", "
+			+ response.responseJSON.contact_info.street_address.zip_code;
+			var contactinfo = email + '<hr>' + phone + '<hr>' + address;
+			$('.body2').html(contactinfo);
+	//SCHOOL1
+			var school1 = response.responseJSON.schools[0].name;
+			$('.three header').html(school1);
+			var degree = response.responseJSON.schools[0].degree;
+			var gpa = response.responseJSON.schools[0].gpa;
+			var gpadegree = degree + ', ' + gpa + ' GPA';
+			var major = response.responseJSON.schools[0].major;
+			var minor = response.responseJSON.schools[0].minor;
+			var startend = response.responseJSON.schools[0].start_month_year + ' - ' + response.responseJSON.schools[0].end_month_year;
+			var school1info = gpadegree + '<hr>' + major + ', ' + minor + '<hr>' + startend;
+			$('.body3 h1').html(school1info);
+			// Experience
+			var organization = response.responseJSON.experience[0].organization;
+			$('.four header').html(organization);
+			var project = response.responseJSON.experience[0].project;
+			var role = response.responseJSON.experience[0].role;
+			var projrole = project + ', ' + role;
+			var location = response.responseJSON.experience[0].location;
+			var startdate = response.responseJSON.experience[0].start_month_year;
+			var enddate = response.responseJSON.experience[0].end_month_year;
+			var locstartend = location + ', ' + startdate + ' - ' + enddate;
+			var res0 = response.responseJSON.experience[0].responsibilities[0];
+			var res1 = response.responseJSON.experience[0].responsibilities[1];
+			var res2 = response.responseJSON.experience[0].responsibilities[2];
+			var res3 = response.responseJSON.experience[0].responsibilities[3];
+			var res4 = response.responseJSON.experience[0].responsibilities[4];
+			var responsibilities = res0 + '<br>' + res1 + '<br>' + res2 + '<br>' + res3 + '<br>' + res4;
+			var experience1 = projrole + '<hr>' + locstartend + '<hr>';
+			$('.body4 h1').html(experience1);
+			$('.body4 p').html(responsibilities);
+			//SKILLS
+			var title = response.responseJSON.skill[0].title;
+			var yearsexp = response.responseJSON.skill[0].experience;
+			var category = response.responseJSON.skill[0].category;
+			var catyear = category + ', ' + yearsexp;
+			var skillnameexp = title + '<hr>' + catyear + ' years experience.' ;
+			$('.body5 h1').html(skillnameexp);
+			//ACCOMPLISHMENTS
+			var accname = response.responseJSON.accomplishments[0].title;
+			var accdate = response.responseJSON.accomplishments[0].month_year;
+			var description = response.responseJSON.accomplishments[0].description;
+			var acc1 = accname + '<hr>' + accdate + '<hr>' + description;
+			$('.body6 h1').html(accname + ', ' + accdate);
+			$('.body6 p').html(description);
+			}
 			
 
-});
-
-
-// what is a cache??
+	});
+});			

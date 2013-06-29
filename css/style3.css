@@ -82,9 +82,7 @@ header {
 	height: 250px;
 	position: relative;
 	padding: 0 50px;
-	left: -1000px;
-	transition: all 800ms ease-in-out;
-
+	
 }
 #info div:nth-of-type(2) {
 	color: red;
@@ -135,10 +133,20 @@ div.bxwrap p {
 	position: relative;
 	height: 300px;
 	width: 360px;
-	background: url('../pic1.jpg');
 	background-size: 100%;
-	margin: 20px
+	margin: 20px;
+	border: 1px solid blue;
 
+}
+.image label, .image input {
+	position: relative;
+	top: 120px;
+	left: 90px;
+}
+.image label {
+	font: 33px Georgia;
+	color: blue;
+	
 }
 
 
@@ -229,7 +237,12 @@ div.bxwrap p {
 	2. how to animate the quote coming in, and possibly make it disappear
 	3. loop the content in
 	 */
-
+.personal header {
+	text-align: center;
+	font-size: 35px;
+	padding-top: 10px;
+	color: #B39BA3;
+}
 #info hr {
 	margin-right: 250px;
 	margin-left: 250px;
