@@ -47,6 +47,9 @@ $(document).ready(function() {
 		$('.active').removeClass('active');
 		link.addClass('active');
 		link.removeClass('hidden');
+		link.children('.body').first().addClass('active');
+		link.children('.body').first().removeClass('hidden');
+
 	}
 
 	if (!link.hasClass('active')) 
@@ -95,22 +98,22 @@ $(document).ready(function() {
 			var school1info = degree + ', ' + gpa + ' GPA' + '<hr>' + major + ', ' + minor + '<hr>' + startdate + ' - ' + enddate;
 			
 
-			$('.educ').append("<div class='body1 some" + (i+1) + "'>"+
+			$('.educ').append("<div class='body some" + (i+1) + "'>"+
 								"<h1>" + school1 + "</h1>" +
 								"<p>" + school1info + "</p>" +
 							"</div>");
-			$('.lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
-			$('.body1').first().addClass('active');
-			$('.body1').parent().children('.body1').not('.active').addClass('hidden');
+			$('.edu .lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
+			$('.body').first().addClass('active');
+			$('.body').not('.active').addClass('hidden');
 
 			}	
 
 			$('.lists a').hover(function() {
-				$('.body1.active').addClass('hidden');
-				$('.body1.active').removeClass('active');
+				$('#info').children().children('.active').addClass('hidden');
+				$('#info').children().children('.active').removeClass('active');
 				var value = $(this).text();
 				var num = parseInt(value);
-				var listsbody = $('.body1:nth-of-type(' + (num+1) + ')');
+				var listsbody = $('.body:nth-of-type(' + (num+1) + ')');
 				listsbody.addClass('active');
 				listsbody.removeClass('hidden');
 			});
@@ -135,10 +138,11 @@ $(document).ready(function() {
 			$('.expr').append("<div class='body2'>" +
 								"<h1>" + organization + "</h1>" +
 								"<h2>" + experience1 + "</h2></div>");
+			
 
 				for(j=0; j < response.responseJSON.experience[i].responsibilities.length; j++) {
 				var res = response.responseJSON.experience[i].responsibilities[j];
-				$('.body2:nth-of-type(' + (i+1) + ')').append("<p>" + res + "</p>");
+				$(".body2:nth-of-type(" + (i+2) + ")").append("<p>" + res + "</p>");
 				}
 			
 			}
