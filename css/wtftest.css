@@ -173,6 +173,7 @@ div.bxwrap p {
 	margin-bottom: -15px;
 	color: #B39BA3;
 	font-family: "Raleway";
+	position: relative;
 }
 header {
 	position: relative;
@@ -273,4 +274,22 @@ header {
 	text-decoration: none;
 	color: inherit;
 	font-style: normal;
+}
+.lists ul {
+	position: absolute;
+	top: 30px;
+	right: 80px;
+}
+.lists ul li {
+	display: inline-block;
+	font: 20px "Raleway";
+	list-style: none;
+	opacity: .5;
+	margin: 0 20px;
+
+}
+.lists a {
+	text-decoration: none;
+	color: rgb(221, 22, 22);
+
 }

@@ -5,17 +5,15 @@ $(document).ready(function() {
 	setTimeout(function() {
    	$('#p1').hide(2000);
   
-	}, 7000)
+	}, 7000);
 	//hover event
-	// $('.image').hover(function() {
+	$('.image').hover(function() {
 
-	// 	$(this).toggleClass('imghover');
-	// 	$('.lowerleftcontainer').toggleClass('lowerlefthover');
-	// 	$('.lowerrightcontainer').toggleClass('lowerrighthover');
+		$(this).toggleClass('imghover');
+		$('.lowerleftcontainer').toggleClass('lowerlefthover');
+		$('.lowerrightcontainer').toggleClass('lowerrighthover');
+	});
 
-
-
-	// });
 	//figure out how to prevent this function from interferring with mouseenter before adding a call to it
 	// var i = 0;
 	// function cycle() {
@@ -35,11 +33,6 @@ $(document).ready(function() {
 		
 	// 	}
 
-
-
-	
-//perform all those actions on the nth element}
-	
 
 	$('#p2 span').click(function(event){
 	//prevents the event from taking us to the top of the page
@@ -101,11 +94,31 @@ $(document).ready(function() {
 			
 			var school1info = degree + ', ' + gpa + ' GPA' + '<hr>' + major + ', ' + minor + '<hr>' + startdate + ' - ' + enddate;
 			
-			$('.educ').append("<div class='body1'>"+
+
+			$('.educ').append("<div class='body1 some" + (i+1) + "'>"+
 								"<h1>" + school1 + "</h1>" +
 								"<p>" + school1info + "</p>" +
 							"</div>");
+			$('.lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
+			$('.body1').first().addClass('active');
+			$('.body1').parent().children('.body1').not('.active').addClass('hidden');
+
 			}	
+
+			$('.lists a').hover(function() {
+				$('.body1.active').addClass('hidden');
+				$('.body1.active').removeClass('active');
+				var value = $(this).text();
+				var num = parseInt(value);
+				var listsbody = $('.body1:nth-of-type(' + (num+1) + ')');
+				listsbody.addClass('active');
+				listsbody.removeClass('hidden');
+			});
+			// if that class is active, change its associated lists a element style to italic
+			
+
+
+
 
 			// Experience
 			for(i=0; i < response.responseJSON.experience.length; i++) {
@@ -122,13 +135,19 @@ $(document).ready(function() {
 			$('.expr').append("<div class='body2'>" +
 								"<h1>" + organization + "</h1>" +
 								"<h2>" + experience1 + "</h2></div>");
-			for(j=0; j < response.responseJSON.experience[i].responsibilities.length; j++) {
+
+				for(j=0; j < response.responseJSON.experience[i].responsibilities.length; j++) {
 				var res = response.responseJSON.experience[i].responsibilities[j];
 				$('.body2:nth-of-type(' + (i+1) + ')').append("<p>" + res + "</p>");
+				}
+			
 			}
 			
-		}
-			
+
+
+
+
+
 			//SKILLS
 			for(i=0; i < response.responseJSON.skill.length; i++) {
 			var title = response.responseJSON.skill[i].title;
@@ -154,4 +173,6 @@ $(document).ready(function() {
 
 	 }
 	});
+	
+	
 });			
