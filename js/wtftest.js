@@ -58,53 +58,53 @@ $(document).ready(function() {
 
 
 	
-	$.ajax('/api/resumes/51c481298878e79d31000001', {
+	$.ajax('/api/resumes', {
 		complete : function(response) {
-			// var r = response.responseJSON	
-			// console.log(response.responseJSON);
+			var r = response.responseJSON[0];	
+			// console.log(r);
 			// // PERSONAL INFO
-			var first = response.responseJSON.name_first;
-			var last = response.responseJSON.name_last;
+			var first = r.name_first;
+			var last = r.name_last;
 			var fullName = first + " " + last;
 			$('.body6 h1').html(fullName);
 			$('.topname p').html(fullName);
-			var website = response.responseJSON.website;
-			var twitter = response.responseJSON.twitter;
-			var linkedin = response.responseJSON.linked_in;
+			var website = r.website;
+			var twitter = r.twitter;
+			var linkedin = r.linked_in;
 			var webtwitin = website + '<br><hr>' + twitter + '<br><hr>' + linkedin;
 			$('.body6 p').html(webtwitin);
 			// CONTACT INFO
-			var email = response.responseJSON.contact_info.email;
-			var phone = response.responseJSON.contact_info.phone;
-			var address = response.responseJSON.contact_info.street_address.street + ", "  +
-			+ response.responseJSON.contact_info.street_address.city + ", "
-			+ response.responseJSON.contact_info.street_address.state + ", "
-			+ response.responseJSON.contact_info.street_address.zip_code;
+			var email = r.contact_info.email;
+			var phone = r.contact_info.phone;
+			var address = r.contact_info.street_address.street + ", "  +
+			+ r.contact_info.street_address.city + ", "
+			+ r.contact_info.street_address.state + ", "
+			+ r.contact_info.street_address.zip_code;
 			var contactinfo = email + '<hr>' + phone + '<hr>' + address;
 			$('.body5 p').html(contactinfo);
 			
 
 			//SCHOOL1
 
-			for(i=0; i < response.responseJSON.schools.length; i++) {
-			var school1 = response.responseJSON.schools[i].name;
-			var degree = response.responseJSON.schools[i].degree;
-			var gpa = response.responseJSON.schools[i].gpa;
-			var major = response.responseJSON.schools[i].major;
-			var minor = response.responseJSON.schools[i].minor;
-			var startdate = response.responseJSON.schools[i].start_month_year; 
-			var enddate = response.responseJSON.schools[i].end_month_year;
-			
-			var school1info = degree + ', ' + gpa + ' GPA' + '<hr>' + major + ', ' + minor + '<hr>' + startdate + ' - ' + enddate;
-			
+			for(i=0; i < r.schools.length; i++) {
+				var school1 = r.schools[i].name;
+				var degree = r.schools[i].degree;
+				var gpa = r.schools[i].gpa;
+				var major = r.schools[i].major;
+				var minor = r.schools[i].minor;
+				var startdate = r.schools[i].start_month_year; 
+				var enddate = r.schools[i].end_month_year;
+				
+				var school1info = degree + ', ' + gpa + ' GPA' + '<hr>' + major + ', ' + minor + '<hr>' + startdate + ' - ' + enddate;
+				
 
-			$('.educ').append("<div class='body some" + (i+1) + "'>"+
-								"<h1>" + school1 + "</h1>" +
-								"<p>" + school1info + "</p>" +
-							"</div>");
-			$('.edu .lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
-			$('.body').first().addClass('active');
-			$('.body').not('.active').addClass('hidden');
+				$('.educ').append("<div class='body some" + (i+1) + "'>"+
+									"<h1>" + school1 + "</h1>" +
+									"<p>" + school1info + "</p>" +
+								"</div>");
+				$('.edu .lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
+				$('.body').first().addClass('active');
+				$('.body').not('.active').addClass('hidden');
 
 			}	
 
@@ -113,7 +113,7 @@ $(document).ready(function() {
 				$('#info').children().children('.active').removeClass('active');
 				var value = $(this).text();
 				var num = parseInt(value);
-				var listsbody = $('.body:nth-of-type(' + (num+1) + ')');
+				var listsbody = $($('.body')[num-1]);
 				listsbody.addClass('active');
 				listsbody.removeClass('hidden');
 			});
@@ -124,14 +124,14 @@ $(document).ready(function() {
 
 
 			// Experience
-			for(i=0; i < response.responseJSON.experience.length; i++) {
-			var organization = response.responseJSON.experience[i].organization;
-			var project = response.responseJSON.experience[i].project;
-			var role = response.responseJSON.experience[i].role;
+			for(i=0; i < r.experience.length; i++) {
+			var organization = r.experience[i].organization;
+			var project = r.experience[i].project;
+			var role = r.experience[i].role;
 			var projrole = project + ', ' + role;
-			var location = response.responseJSON.experience[i].location;
-			var startdate = response.responseJSON.experience[i].start_month_year;
-			var enddate = response.responseJSON.experience[i].end_month_year;
+			var location = r.experience[i].location;
+			var startdate = r.experience[i].start_month_year;
+			var enddate = r.experience[i].end_month_year;
 			var locstartend = location + ', ' + startdate + ' - ' + enddate;
 
 			var experience1 = projrole + '<hr>' + locstartend + '<hr>';
@@ -140,8 +140,8 @@ $(document).ready(function() {
 								"<h2>" + experience1 + "</h2></div>");
 			
 
-				for(j=0; j < response.responseJSON.experience[i].responsibilities.length; j++) {
-				var res = response.responseJSON.experience[i].responsibilities[j];
+				for(j=0; j < r.experience[i].responsibilities.length; j++) {
+				var res = r.experience[i].responsibilities[j];
 				$(".body2:nth-of-type(" + (i+2) + ")").append("<p>" + res + "</p>");
 				}
 			
@@ -153,10 +153,10 @@ $(document).ready(function() {
 
 
 			//SKILLS
-			for(i=0; i < response.responseJSON.skill.length; i++) {
-			var title = response.responseJSON.skill[i].title;
-			var yearsexp = response.responseJSON.skill[i].experience;
-			var category = response.responseJSON.skill[i].category;
+			for(i=0; i < r.skill.length; i++) {
+			var title = r.skill[i].title;
+			var yearsexp = r.skill[i].experience;
+			var category = r.skill[i].category;
 			var catyear = category + ', ' + yearsexp;
 			var skillnameexp = title + '<hr>' + catyear + ' years experience.';
 
@@ -165,10 +165,10 @@ $(document).ready(function() {
 								"<p>" + catyear + "</p></div>");
 			}	
 			 //ACCOMPLISHMENTS
-			for(i=0; i < response.responseJSON.accomplishments.length; i++) {
-			var accname = response.responseJSON.accomplishments[i].title;
-			var accdate = response.responseJSON.accomplishments[i].month_year;
-			var description = response.responseJSON.accomplishments[i].description;
+			for(i=0; i < r.accomplishments.length; i++) {
+			var accname = r.accomplishments[i].title;
+			var accdate = r.accomplishments[i].month_year;
+			var description = r.accomplishments[i].description;
 			var acc1 = accname + '<hr>' + accdate + '<hr>' + description;
 			
 			$('.accompz').append("<div class='body4'><h1>" + accname + ', ' + accdate + "</h1><p>" + description + "</p></div>");
@@ -177,6 +177,12 @@ $(document).ready(function() {
 
 	 }
 	});
-	
+	$('.delete').submit(function() {
+		$.ajax({
+			url : '/api/resumes'+r.id,
+			type: 'DELETE'
+		});
+		window.location = window.location;
+	});
 	
 });			
