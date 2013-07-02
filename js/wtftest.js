@@ -2,13 +2,13 @@ $(document).ready(function() {
 	console.log('im alive');
 	//slide in text
 	$('.bxwrap').css('left', '0')
+	
 	setTimeout(function() {
    	$('#p1').hide(2000);
   
 	}, 7000);
 	//hover event
 	$('.image').hover(function() {
-
 		$(this).toggleClass('imghover');
 		$('.lowerleftcontainer').toggleClass('lowerlefthover');
 		$('.lowerrightcontainer').toggleClass('lowerrighthover');
@@ -59,7 +59,9 @@ $(document).ready(function() {
 
 	
 	$.ajax('/api/resumes', {
+
 		complete : function(response) {
+
 			var r = response.responseJSON[0];	
 			// console.log(r);
 			// // PERSONAL INFO
@@ -69,11 +71,14 @@ $(document).ready(function() {
 			$('.body6 h1').html(fullName);
 			$('.topname p').html(fullName);
 			var website = r.website;
+
 			var twitter = r.twitter;
 			var linkedin = r.linked_in;
 			var webtwitin = website + '<br><hr>' + twitter + '<br><hr>' + linkedin;
 			$('.body6 p').html(webtwitin);
+			
 			// CONTACT INFO
+			
 			var email = r.contact_info.email;
 			var phone = r.contact_info.phone;
 			var address = r.contact_info.street_address.street + ", "  +
@@ -83,7 +88,6 @@ $(document).ready(function() {
 			var contactinfo = email + '<hr>' + phone + '<hr>' + address;
 			$('.body5 p').html(contactinfo);
 			
-
 			//SCHOOL1
 
 			for(i=0; i < r.schools.length; i++) {
@@ -105,10 +109,9 @@ $(document).ready(function() {
 				$('.edu .lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
 				$('.body').first().addClass('active');
 				$('.body').not('.active').addClass('hidden');
+				}	
 
-			}	
-
-			$('.lists a').hover(function() {
+			$('.lists a').hover(function() {	
 				$('#info').children().children('.active').addClass('hidden');
 				$('#info').children().children('.active').removeClass('active');
 				var value = $(this).text();
@@ -116,7 +119,7 @@ $(document).ready(function() {
 				var listsbody = $($('.body')[num-1]);
 				listsbody.addClass('active');
 				listsbody.removeClass('hidden');
-			});
+				});
 			// if that class is active, change its associated lists a element style to italic
 			
 
@@ -125,28 +128,27 @@ $(document).ready(function() {
 
 			// Experience
 			for(i=0; i < r.experience.length; i++) {
-			var organization = r.experience[i].organization;
-			var project = r.experience[i].project;
-			var role = r.experience[i].role;
-			var projrole = project + ', ' + role;
-			var location = r.experience[i].location;
-			var startdate = r.experience[i].start_month_year;
-			var enddate = r.experience[i].end_month_year;
-			var locstartend = location + ', ' + startdate + ' - ' + enddate;
+				var organization = r.experience[i].organization;
+				var project = r.experience[i].project;
+				var role = r.experience[i].role;
+				var projrole = project + ', ' + role;
+				var location = r.experience[i].location;
+				var startdate = r.experience[i].start_month_year;
+				var enddate = r.experience[i].end_month_year;
+				var locstartend = location + ', ' + startdate + ' - ' + enddate;
 
-			var experience1 = projrole + '<hr>' + locstartend + '<hr>';
-			$('.expr').append("<div class='body2'>" +
-								"<h1>" + organization + "</h1>" +
-								"<h2>" + experience1 + "</h2></div>");
+				var experience1 = projrole + '<hr>' + locstartend + '<hr>';
+				$('.expr').append("<div class='body2'>" +
+									"<h1>" + organization + "</h1>" +
+									"<h2>" + experience1 + "</h2></div>");
 			
 
 				for(j=0; j < r.experience[i].responsibilities.length; j++) {
 				var res = r.experience[i].responsibilities[j];
 				$(".body2:nth-of-type(" + (i+2) + ")").append("<p>" + res + "</p>");
-				}
-			
+					}
 			}
-			
+			// $($('.body')[num-1]);
 
 
 
@@ -166,23 +168,25 @@ $(document).ready(function() {
 			}	
 			 //ACCOMPLISHMENTS
 			for(i=0; i < r.accomplishments.length; i++) {
-			var accname = r.accomplishments[i].title;
-			var accdate = r.accomplishments[i].month_year;
-			var description = r.accomplishments[i].description;
-			var acc1 = accname + '<hr>' + accdate + '<hr>' + description;
+				var accname = r.accomplishments[i].title;
+				var accdate = r.accomplishments[i].month_year.slice(0,2);
+				var accdate1 = r.accomplishments[i].month_year.slice(2,4);
+				var description = r.accomplishments[i].description;
+				var acc1 = accname + '<hr>' + accdate + '<hr>' + description;
+				$('.accompz').append("<div class='body4'><h1>" + accname + ', ' + accdate + '/' + accdate1 + "</h1><p>" + description + "</p></div>");
+				}
+			$('.delete').click(function() {
+				$.ajax({
+					url : '/api/resumes/'+r.id,
+					type: 'DELETE',
+					complete : function() {
+						window.location = window.location;
+					}
+				});
+				console.log(r.id);
+			});	
+		}
 			
-			$('.accompz').append("<div class='body4'><h1>" + accname + ', ' + accdate + "</h1><p>" + description + "</p></div>");
-			}
-			
-
-	 }
-	});
-	$('.delete').submit(function() {
-		$.ajax({
-			url : '/api/resumes'+r.id,
-			type: 'DELETE'
 		});
-		window.location = window.location;
-	});
-	
+
 });			

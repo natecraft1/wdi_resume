@@ -16,7 +16,7 @@
 
 	$(document).ready(function() {
 
-		$('.bxwrap').css('left', '0')
+		$('.bxwrap').css('left', '0');
 		$('.add_new a').click(addExp); 
 		 
 		$('.responsies a').click(addRes);
@@ -24,6 +24,7 @@
 		$('#submit').submit(function() {
 			var userData = {};
 			
+			//quote
 			// contact_info
 			userData.contact_info 							= {};
 			userData.contact_info.email 					= $('.email').val();
@@ -61,23 +62,23 @@
 			});
 			//experience
 			userData.experience								= [];
-			$('.cont2').each(function() {
+			$('.cont2').each(function(index, elem) {
 				var end 									= $(this).find('.end_month_year').val();
 				var end_month_year							= end.slice(5,7) + end.slice(2,4);
 				var start 									= $(this).find('.start_month_year').val();
 				var start_month_year						= start.slice(5,7) + start.slice(2,4);
 				
 				var responsibilities 						= [];
-				$('.resp1').each(function(index){
-					responsibilities.push($(this).val());
+				$(elem).find('.resp1').each(function(ind, ele){
+					responsibilities.push($(ele).val());
 				});
-				
+				console.log(responsibilities);
 
 				userData.experience.push({
-					organization : $(this).find('.organization').val(),
-					project : $(this).find('.project').val(),
-					role : $(this).find('.role').val(),
-					location : $(this).find('.location').val(),
+					organization : $(elem).find('.organization').val(),
+					project : $(elem).find('.project').val(),
+					role : $(elem).find('.role').val(),
+					location : $(elem).find('.location').val(),
 					start_month_year : start_month_year,
 					end_month_year : end_month_year,
 					responsibilities : responsibilities 
@@ -86,9 +87,9 @@
 			});
 			
 			//skills
-			userData.skills 								= [];
+			userData.skill 								= [];
 			$('.cont3').each(function(){
-				userData.experience.push({
+				userData.skill.push({
 					title : $(this).find('.title').val(),
 					experience : $(this).find('.yrsexp').val(),
 					category : $(this).find('.category').val()
