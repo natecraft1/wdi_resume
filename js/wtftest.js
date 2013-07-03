@@ -47,8 +47,10 @@ $(document).ready(function() {
 		$('.active').removeClass('active');
 		link.addClass('active');
 		link.removeClass('hidden');
-		link.children('.body').first().addClass('active');
-		link.children('.body').first().removeClass('hidden');
+		link.children('.some').first().addClass('active');
+		link.children('.some').first().removeClass('hidden');
+		$(".some:not('.active')").addClass('hidden');
+
 
 	}
 
@@ -102,28 +104,16 @@ $(document).ready(function() {
 				var school1info = degree + ', ' + gpa + ' GPA' + '<hr>' + major + ', ' + minor + '<hr>' + startdate + ' - ' + enddate;
 				
 
-				$('.educ').append("<div class='body some" + (i+1) + "'>"+
+				$('.educ').append("<div class='body some'>"+
 									"<h1>" + school1 + "</h1>" +
 									"<p>" + school1info + "</p>" +
 								"</div>");
-				$('.edu .lists ul').append("<li><a class='some" + (i+1) + "'>" + (i+1) + "</a></li>");
+				$('.edu .lists ul').append("<li><a>" + (i+1) + "</a></li>");
 				$('.body').first().addClass('active');
-				$('.body').not('.active').addClass('hidden');
+				$(".body:not('.active')").addClass('hidden');
 				}	
 
-			$('.lists a').hover(function() {	
-				$('#info').children().children('.active').addClass('hidden');
-				$('#info').children().children('.active').removeClass('active');
-				var value = $(this).text();
-				var num = parseInt(value);
-				var listsbody = $($('.body')[num-1]);
-				listsbody.addClass('active');
-				listsbody.removeClass('hidden');
-				});
-			// if that class is active, change its associated lists a element style to italic
 			
-
-
 
 
 			// Experience
@@ -145,14 +135,10 @@ $(document).ready(function() {
 
 				for(j=0; j < r.experience[i].responsibilities.length; j++) {
 				var res = r.experience[i].responsibilities[j];
-				$(".body2:nth-of-type(" + (i+2) + ")").append("<p>" + res + "</p>");
+				$($(".body2")[i]).append("<p>" + res + "</p>");
 					}
 			}
 			// $($('.body')[num-1]);
-
-
-
-
 
 			//SKILLS
 			for(i=0; i < r.skill.length; i++) {
@@ -162,10 +148,23 @@ $(document).ready(function() {
 			var catyear = category + ', ' + yearsexp;
 			var skillnameexp = title + '<hr>' + catyear + ' years experience.';
 
-			$('.sklz').append("<div class='body3'>" +
+			$('.sklz').append("<div class='body3 some'>" +
 								"<h1>" + title + "</h1>" +
 								"<p>" + catyear + "</p></div>");
-			}	
+			$('.skillz .lists ul').append("<li><a>" + (i+1) + "</a></li>");
+
+			}
+			$('.lists a').hover(function() {	
+				$('#info').children().children('.active').addClass('hidden');
+				$('#info').children().children('.active').removeClass('active');
+				var value = $(this).text();
+				var num = parseInt(value);
+				var listsbody = $($('.some')[num-1]); 
+				listsbody.addClass('active');
+				listsbody.removeClass('hidden');
+				});
+	
+			console.log(r);	
 			 //ACCOMPLISHMENTS
 			for(i=0; i < r.accomplishments.length; i++) {
 				var accname = r.accomplishments[i].title;
